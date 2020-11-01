@@ -36,28 +36,28 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     helm
+     (ivy :variables ivy-extra-directories nil)
      auto-completion
      better-defaults
      git
      emacs-lisp
-     python
+     (python :variables python-backend 'lsp python-lsp-server 'pyright)
+     (json :variables json-fmt-tool 'web-beautify)
      org
+     my-org
+     my-config
      markdown
      plantuml
      (ranger :variables ranger-show-preview t)
-     (shell :variables
-            shell-default-position 'top
-            shell-default-height 30)
-     (syntax-checking :variables
-                      syntax-checking-enable-by-default nil)
-     emoji
+     shell
+     syntax-checking
+     themes-megapack
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(youdao-dictionary)
+   dotspacemacs-additional-packages '()
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -129,8 +129,11 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light)
+   dotspacemacs-themes '(apropospriate-dark
+                         apropospriate-light
+                         spacemacs-dark)
+   ;; Set mode line theme.
+   dotspacemacs-mode-line-theme '(all-the-icons :separator none)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -138,8 +141,7 @@ values."
    dotspacemacs-default-font '("等距更纱黑体 SC"
                                :size 24
                                :weight normal
-                               :width normal
-                               :powerline-scale 1.1)
+                               :width normal)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -308,8 +310,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
         '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
           ("org-cn"   . "http://elpa.emacs-china.org/org/")
           ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
-  ;; Turn off comment background
-  (setq-default spacemacs-theme-comment-bg nil)
   )
 
 (defun dotspacemacs/user-config ()
@@ -319,69 +319,7 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  ;; 用 df 取代 Esc
-  (setq-default evil-escape-key-sequence "df")
-  ;; mode line 样式
-  (setq powerline-default-separator 'arrow)
-  ;; youdao-dictionary
-  (setq url-automatic-caching t)
-  (global-set-key (kbd "C-c y") 'youdao-dictionary-search-at-point-tooltip)
-  ;; fix https://github.com/syl20bnr/spacemacs/issues/11798
-  (when (version<= "9.2" (org-version))
-    (require 'org-tempo))
-  ;; toggle python breakpoint
-  (defun spacemacs/python-toggle-breakpoint ()
-     "Add a break point, highlight it."
-     (interactive)
-     (let ((trace (cond ((spacemacs/pyenv-executable-find "trepan3k") "import trepan.api; trepan.api.debug()")
-                        ((spacemacs/pyenv-executable-find "wdb") "import wdb; wdb.set_trace()")
-                        ((spacemacs/pyenv-executable-find "ipdb") "import ipdb; ipdb.set_trace()")
-                        ((spacemacs/pyenv-executable-find "pudb") "import pudb; pudb.set_trace()")
-                        ((spacemacs/pyenv-executable-find "ipdb3") "import ipdb; ipdb.set_trace()")
-                        ((spacemacs/pyenv-executable-find "pudb3")
-                         (if (string= (getenv "PYTHONBREAKPOINT") "pudb.set_trace")
-                             "breakpoint()" "import pudb; pudb.set_trace()"))
-                        ((spacemacs/pyenv-executable-find "python3.7") "breakpoint()")
-                        ((spacemacs/pyenv-executable-find "python3.8") "breakpoint()")
-                        (t "breakpoint()")))
-           (line (thing-at-point 'line)))
-       (if (and line (string-match trace line))
-           (kill-whole-line)
-         (progn
-           (back-to-indentation)
-           (insert trace)
-           (insert "\n")
-           (python-indent-line)))))
-  ;; org mode
-  (add-hook 'org-mode-hook 'turn-on-auto-fill)
-  (use-package org
-    :init
-    (spacemacs/toggle-auto-fill-mode-on)
-    :config
-    (setq org-hide-emphasis-markers t)
-    (setq org-startup-indented t)
-    (setq indent-tabs-mode nil)
-    (setq default-tab-width 4))
-  (spacemacs/set-leader-keys-for-major-mode 'org-mode "n" 'org-toggle-narrow-to-subtree)
-  ;; org agenda
-  (setq org-agenda-custom-commands
-        '(
-          ("w" . "任务安排")
-          ("wa" "重要且紧急的任务" tags-todo "+PRIORITY=\"A\"")
-          ("wb" "重要但不紧急的任务" tags-todo "-weekly-monthly-daily+PRIORITY=\"B\"")
-          ("wc" "不重要且不紧急的任务" tags-todo "+PRIORITY=\"C\"")
-          ("W" "Weekly Review"
-           ((stuck "") ;; review stuck projects as designated by org-stuck-projects
-            (tags-todo "work")
-            (tags-todo "study")
-            (tags-todo "life")
-            (tags-todo "daily")
-            (tags-todo "weekly")
-            ))
-          ))
-
-  (setq org-todo-keywords
-        '((sequence "TODO(t)" "WAIT(w)" "SOMEDAY(s)" "|" "DONE(d!)" "CANCELED(c@/!)")))
+  (spacemacs/set-leader-keys "ar" 'ranger)
   )
 
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))

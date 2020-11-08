@@ -55,14 +55,16 @@
             (tags-todo "weekly")
             ))
           ))
+
   (setq org-capture-templates
         '(("i" "Inbox" entry (file+headline "~/gtd.org" "Inbox")
-           "* TODO %?\n  %i\n")
-          ("n" "Quick Note" entry (file+headline "~/Documents/notes/quick-notes.org" "Quick Notes")
-           "* %?\n  %i\n")))
+           "* TODO %?\n %i\n")
+          ("n" "Quick Note" entry (file "~/Documents/notes/quick-notes.org")
+           "* %?\n %x\n")))
+
   (setq org-todo-keywords
         '((sequence "TODO(t)" "WAIT(w)" "SOMEDAY(s)" "|" "DONE(d!)" "CANCELED(c@/!)")))
-  (setq org-superstar-headline-bullets-list '("¶" "◉" "○")))
+  (setq org-superstar-headline-bullets-list '("¶" "◉" "○" "§")))
 
 (defun my-org/post-init-org ()
   "Configuration of org mode"
@@ -108,9 +110,10 @@
 
 (defun my-org/post-init-org-download ()
   "configurations of org-download package"
-  (setq-default org-download-image-dir "~/Pictures/org-download")
-  (setq-default org-download-heading-lvl nil)
-  (setq-default org-download-abbreviate-filename-function 'expand-file-name)
+  ;; (setq-default org-download-image-dir "~/Pictures/org-download")
+  ;; (setq-default org-download-heading-lvl nil)
+  ;; (setq-default org-download-abbreviate-filename-function 'expand-file-name)
+  (setq org-download-method 'attach)
   )
 
 (defun my-org/init-org-super-agenda ()

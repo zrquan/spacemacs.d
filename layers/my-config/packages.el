@@ -32,43 +32,23 @@
 (defconst my-config-packages
   '(evil
     treemacs
-    youdao-dictionary)
-  "The list of Lisp packages required by the my-config layer.
-
-Each entry is either:
-
-1. A symbol, which is interpreted as a package to be installed, or
-
-2. A list of the form (PACKAGE KEYS...), where PACKAGE is the
-    name of the package to be installed or loaded, and KEYS are
-    any number of keyword-value-pairs.
-
-    The following keys are accepted:
-
-    - :excluded (t or nil): Prevent the package from being loaded
-      if value is non-nil
-
-    - :location: Specify a custom installation location.
-      The following values are legal:
-
-      - The symbol `elpa' (default) means PACKAGE will be
-        installed using the Emacs package manager.
-
-      - The symbol `local' directs Spacemacs to load the file at
-        `./local/PACKAGE/PACKAGE.el'
-
-      - A list beginning with the symbol `recipe' is a melpa
-        recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
+    youdao-dictionary
+    ivy-posframe))
 
 (defun my-config/post-init-evil ()
   ;; 用 df 取代 Esc
-  (setq-default evil-escape-key-sequence "df")
-  (setq-default spaceline-helm-mode nil))
+  (setq-default evil-escape-key-sequence "df"))
 
 (defun my-config/init-youdao-dictionary ()
   "有道词典插件"
   (setq url-automatic-caching t)
-  (global-set-key (kbd "C-c y") 'youdao-dictionary-search-at-point-tooltip))
+  (spacemacs/declare-prefix "y" "youdao")
+  (spacemacs/set-leader-keys "yy" 'youdao-dictionary-search-at-point+)
+  (spacemacs/set-leader-keys "ys" 'youdao-dictionary-search-from-input))
+
+(defun my-config/init-ivy-posframe ()
+  (use-package ivy-posframe
+    :config (ivy-posframe-mode)))
 
 (defun my-config/post-init-treemacs ()
   "treemacs 配置")

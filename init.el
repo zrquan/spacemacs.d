@@ -51,7 +51,9 @@ values."
      (ranger :variables ranger-show-preview t)
      shell
      syntax-checking
+     unicode-fonts
      themes-megapack
+     (elfeed :variables rmh-elfeed-org-files (list "~/.spacemacs.d/elfeed.org"))
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -319,7 +321,9 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (spacemacs/set-leader-keys "ar" 'ranger)
+  (spaceline-toggle-all-the-icons-eyebrowse-workspace-off)
+  (spacemacs/set-leader-keys "xO" 'link-hint-open-link-at-point)
+  (spacemacs/set-leader-keys "xo" 'link-hint-open-link)
   )
 
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))

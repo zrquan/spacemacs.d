@@ -39,7 +39,7 @@
     ))
 
 (defun my-org/pre-init-org ()
-  (setq org-agenda-files '("~/gtd.org"))
+  (setq org-agenda-files '("~/gtd/"))
   (setq org-agenda-custom-commands
         '(
           ("w" . "任务安排")
@@ -60,7 +60,7 @@
         '(("i" "Inbox" entry (file+headline "~/gtd.org" "Inbox")
            "* TODO %?\n %i\n")
           ("n" "Quick Note" entry (file "~/Documents/notes/quick-notes.org")
-           "* %?\n %x\n")))
+           "* %?\n%x\n")))
 
   (setq org-todo-keywords
         '((sequence "TODO(t)" "WAIT(w)" "SOMEDAY(s)" "|" "DONE(d!)" "CANCELED(c@/!)")))
@@ -69,11 +69,10 @@
 (defun my-org/post-init-org ()
   "Configuration of org mode"
   (setq org-hide-emphasis-markers t)
-  (setq org-startup-indented t)
   (setq indent-tabs-mode nil)
+  (setq org-startup-indented t)
   (setq default-tab-width 4)
   (setq org-image-actual-width '(750))
-  (spacemacs/set-leader-keys-for-major-mode 'org-mode "n" 'org-toggle-narrow-to-subtree)
   (add-hook 'org-mode-hook 'spacemacs/toggle-auto-fill-mode-on))
 
 (defun my-org/post-init-org-present ()
@@ -121,9 +120,10 @@
     :init
     (setq org-super-agenda-groups
           '((:name "Important"
-                  :priority "A")
+                   :priority "A"
+                   :tag "work")
             (:priority<= "B"
                   :scheduled future)))
-    (add-hook 'org-mode-hook 'org-super-agenda-mode)))
+    (add-hook 'org-agenda-mode-hook 'org-super-agenda-mode)))
 
 ;;; packages.el ends here

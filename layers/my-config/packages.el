@@ -43,7 +43,7 @@
   "有道词典插件"
   (setq url-automatic-caching t)
   (spacemacs/declare-prefix "y" "youdao")
-  (spacemacs/set-leader-keys "yy" 'youdao-dictionary-search-at-point+)
+  (spacemacs/set-leader-keys "yy" 'youdao-dictionary-search-at-point-tooltip)
   (spacemacs/set-leader-keys "ys" 'youdao-dictionary-search-from-input))
 
 (defun my-config/init-ivy-posframe ()
@@ -51,6 +51,7 @@
     :config (ivy-posframe-mode)))
 
 (defun my-config/post-init-treemacs ()
-  "treemacs 配置")
+  "treemacs 配置"
+  (setq-default treemacs-python-executable "c:/Program Files/Python/Python38/python.exe"))
 
 ;;; packages.el ends here

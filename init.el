@@ -42,18 +42,16 @@ values."
      git
      emacs-lisp
      (python :variables python-backend 'lsp python-lsp-server 'pyright)
-     (json :variables json-fmt-tool 'web-beautify)
+     javascript
      org
      my-org
      my-config
-     markdown
      plantuml
      (ranger :variables ranger-show-preview t)
      shell
      syntax-checking
      unicode-fonts
      themes-megapack
-     (elfeed :variables rmh-elfeed-org-files (list "~/.spacemacs.d/elfeed.org"))
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -63,7 +61,10 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(rainbow-delimiters)
+   dotspacemacs-excluded-packages
+   '(;; 不需要的 packages
+     rainbow-delimiters evil-tutor evil-ediff
+     evil-lion google-translate)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -227,7 +228,7 @@ values."
    dotspacemacs-loading-progress-bar t
    ;; If non nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
-   dotspacemacs-fullscreen-at-startup t
+   dotspacemacs-fullscreen-at-startup nil
    ;; If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
    ;; Use to disable fullscreen animations in OSX. (default nil)
    dotspacemacs-fullscreen-use-non-native nil
@@ -238,7 +239,7 @@ values."
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-active-transparency 90
+   dotspacemacs-active-transparency 95
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -324,6 +325,14 @@ you should place your code here."
   (spaceline-toggle-all-the-icons-eyebrowse-workspace-off)
   (spacemacs/set-leader-keys "xO" 'link-hint-open-link-at-point)
   (spacemacs/set-leader-keys "xo" 'link-hint-open-link)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode "r" 'org-redisplay-inline-images)
+  (spacemacs/toggle-maximize-frame-on)
+  ;; (spacemacs/toggle-transparency)
+
+  (add-to-list 'all-the-icons-mode-icon-alist '(ranger-mode all-the-icons-octicon "file-directory" :v-adjust 0.0))
+  (add-to-list 'all-the-icons-mode-icon-alist '(lsp-ui-imenu-mode all-the-icons-material "view_headline" :v-adjust 0.0))
+  (add-to-list 'all-the-icons-mode-icon-alist '(dap-server-log-mode all-the-icons-material "bug_report" :v-adjust 0.0))
+  (add-to-list 'all-the-icons-mode-icon-alist '(bookmark-bmenu-mode all-the-icons-octicon "bookmark" :v-adjust 0.0))
   )
 
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))

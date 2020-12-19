@@ -39,7 +39,7 @@
     ))
 
 (defun my-org/pre-init-org ()
-  (setq org-agenda-files '("~/gtd/"))
+  (setq org-agenda-files '("~/org/gtd/"))
   (setq org-agenda-custom-commands
         '(
           ("w" . "任务安排")
@@ -57,9 +57,9 @@
           ))
 
   (setq org-capture-templates
-        '(("i" "Inbox" entry (file+headline "~/gtd.org" "Inbox")
+        '(("i" "Inbox" entry (file "~/org/gtd/inbox.org")
            "* TODO %?\n %i\n")
-          ("n" "Quick Note" entry (file "~/Documents/notes/quick-notes.org")
+          ("n" "Quick Note" entry (file "~/org/notes/quick-notes.org")
            "* %?\n%x\n")))
 
   (setq org-todo-keywords
@@ -109,10 +109,8 @@
 
 (defun my-org/post-init-org-download ()
   "configurations of org-download package"
-  ;; (setq-default org-download-image-dir "~/Pictures/org-download")
-  ;; (setq-default org-download-heading-lvl nil)
-  ;; (setq-default org-download-abbreviate-filename-function 'expand-file-name)
-  (setq org-download-method 'attach)
+  (setq-default org-download-image-dir "~/org/images")
+  (setq-default org-download-heading-lvl 0)
   )
 
 (defun my-org/init-org-super-agenda ()

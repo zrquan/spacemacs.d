@@ -333,6 +333,7 @@ you should place your code here."
   (add-to-list 'all-the-icons-mode-icon-alist '(lsp-ui-imenu-mode all-the-icons-material "view_headline" :v-adjust 0.0))
   (add-to-list 'all-the-icons-mode-icon-alist '(dap-server-log-mode all-the-icons-material "bug_report" :v-adjust 0.0))
   (add-to-list 'all-the-icons-mode-icon-alist '(bookmark-bmenu-mode all-the-icons-octicon "bookmark" :v-adjust 0.0))
+  (add-to-list 'all-the-icons-mode-icon-alist '(org-brain-visualize-mode all-the-icons-material "school" :v-adjust 0.0))
   )
 
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))

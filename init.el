@@ -51,13 +51,14 @@ values."
      shell
      syntax-checking
      unicode-fonts
-     themes-megapack
+     ;;themes-megapack
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(
+    (apropospriate-theme :location (recipe :fetcher github :repo "zrquan/apropospriate-theme")))
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -133,8 +134,7 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(apropospriate-dark
-                         apropospriate-light
-                         spacemacs-dark)
+                         light-soap)
    ;; Set mode line theme.
    dotspacemacs-mode-line-theme '(all-the-icons :separator none)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -142,7 +142,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("等距更纱黑体 SC"
-                               :size 24
+                               :size 20
                                :weight normal
                                :width normal)
    ;; The leader key
@@ -336,5 +336,6 @@ you should place your code here."
   (add-to-list 'all-the-icons-mode-icon-alist '(org-brain-visualize-mode all-the-icons-material "school" :v-adjust 0.0))
   )
 
+;; load custom.el
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
 (load custom-file 'no-error 'no-message)

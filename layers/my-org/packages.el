@@ -73,7 +73,8 @@
   (setq org-startup-indented t)
   (setq default-tab-width 4)
   (setq org-image-actual-width '(750))
-  (add-hook 'org-mode-hook 'spacemacs/toggle-auto-fill-mode-on))
+  (add-hook 'org-mode-hook 'spacemacs/toggle-auto-fill-mode-on)
+  (add-hook 'org-mode-hook 'toggle-truncate-lines))
 
 (defun my-org/post-init-org-present ()
   (setq org-present-text-scale 3)
@@ -111,6 +112,7 @@
   "configurations of org-download package"
   (setq-default org-download-image-dir "~/org/images")
   (setq-default org-download-heading-lvl 0)
+  (setq-default org-download-image-org-width 400)
   )
 
 (defun my-org/init-org-super-agenda ()

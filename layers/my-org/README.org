@@ -1,1 +1,13 @@
 #+TITLE: Org Mode 配置
+
+* Key bindings
+* Packages
+1. org-super-agenda
+2. org-brain/org-roam
+3. +org-present+
+4. org-reveal
+5. org-download
+
+* todo
+1. org 代码块语言支持
+2. 自动补全优化

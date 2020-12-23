@@ -32,21 +32,12 @@
 (defconst my-config-packages
   '(evil
     treemacs
-    youdao-dictionary
     go-translate
-    ;;ivy-posframe
     ))
 
 (defun my-config/post-init-evil ()
   ;; 用 df 取代 Esc
   (setq-default evil-escape-key-sequence "df"))
-
-(defun my-config/init-youdao-dictionary ()
-  "有道词典插件"
-  (setq url-automatic-caching t)
-  (spacemacs/declare-prefix "y" "youdao")
-  (spacemacs/set-leader-keys "yy" 'youdao-dictionary-search-at-point-tooltip)
-  (spacemacs/set-leader-keys "ys" 'youdao-dictionary-search-from-input))
 
 (defun my-config/init-go-translate ()
   "google translate"
@@ -58,10 +49,6 @@
   ;; https://github.com/atykhonov/google-translate/issues/52
   (defun go-translate-token--extract-tkk ()
     (cons 430675 2721866130)))
-
-;;(defun my-config/init-ivy-posframe ()
-;;  (use-package ivy-posframe
-;;    :config (ivy-posframe-mode)))
 
 (defun my-config/post-init-treemacs ()
   "treemacs 配置"

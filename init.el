@@ -42,7 +42,8 @@ values."
      git
      emacs-lisp
      (python :variables python-backend 'lsp python-lsp-server 'pyright)
-     javascript
+     (chinese :variables
+              chinese-enable-youdao-dict t)
      org
      my-org
      my-config
@@ -57,8 +58,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(
-    (apropospriate-theme :location (recipe :fetcher github :repo "zrquan/apropospriate-theme")))
+   dotspacemacs-additional-packages '()
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -133,8 +133,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(apropospriate-dark
-                         light-soap)
+   dotspacemacs-themes '((apropospriate-dark :location local)
+                         (apropospriate-light :location local))
    ;; Set mode line theme.
    dotspacemacs-mode-line-theme '(all-the-icons :separator none)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -334,6 +334,12 @@ you should place your code here."
   (add-to-list 'all-the-icons-mode-icon-alist '(dap-server-log-mode all-the-icons-material "bug_report" :v-adjust 0.0))
   (add-to-list 'all-the-icons-mode-icon-alist '(bookmark-bmenu-mode all-the-icons-octicon "bookmark" :v-adjust 0.0))
   (add-to-list 'all-the-icons-mode-icon-alist '(org-brain-visualize-mode all-the-icons-material "school" :v-adjust 0.0))
+
+  (setq ivy-height 8)
+
+  ;;(spacemacs//set-monospaced-font "Jetbrains Mono" "华文楷体" 18 22)
+  (spacemacs/set-leader-keys "oy" 'youdao-dictionary-search-at-point-tooltip)
+  (spacemacs/set-leader-keys "oi" 'youdao-dictionary-search-from-input)
   )
 
 ;; load custom.el

@@ -1,4 +1,4 @@
-;;; packages.el --- my-config layer packages file for Spacemacs.
+;;; packages.el --- zrquan-misc layer packages file for Spacemacs.
 ;;
 ;; Copyright (c) 2012-2020 Sylvain Benner & Contributors
 ;;
@@ -18,39 +18,42 @@
 ;;
 ;;
 ;; Briefly, each package to be installed or configured by this layer should be
-;; added to `my-config-packages'. Then, for each package PACKAGE:
+;; added to `zrquan-misc-packages'. Then, for each package PACKAGE:
 ;;
 ;; - If PACKAGE is not referenced by any other Spacemacs layer, define a
-;;   function `my-config/init-PACKAGE' to load and initialize the package.
+;;   function `zrquan-misc/init-PACKAGE' to load and initialize the package.
 
 ;; - Otherwise, PACKAGE is already referenced by another Spacemacs layer, so
-;;   define the functions `my-config/pre-init-PACKAGE' and/or
-;;   `my-config/post-init-PACKAGE' to customize the package as it is loaded.
+;;   define the functions `zrquan-misc/pre-init-PACKAGE' and/or
+;;   `zrquan-misc/post-init-PACKAGE' to customize the package as it is loaded.
 
 ;;; Code:
 
-(defconst my-config-packages
-  '(evil
+(defconst zrquan-misc-packages
+  '(
+    evil
     treemacs
     go-translate
     ))
 
-(defun my-config/post-init-evil ()
+(defun zrquan-misc/post-init-evil ()
   ;; 用 df 取代 Esc
   (setq-default evil-escape-key-sequence "df"))
 
-(defun my-config/init-go-translate ()
+(defun zrquan-misc/init-go-translate ()
   "google translate"
   (setq go-translate-base-url "https://translate.google.cn")
   (setq go-translate-target-language "zh-CN"))
 
-(defun my-config/post-init-go-translate ()
-  ;; fix bug
-  ;; https://github.com/atykhonov/google-translate/issues/52
-  (defun go-translate-token--extract-tkk ()
-    (cons 430675 2721866130)))
+(defun zrquan-misc/post-init-go-translate ()
+  (with-eval-after-load 'go-translate
+    ;; fix bug
+    ;; https://github.com/atykhonov/google-translate/issues/52
+    (defun go-translate-token--extract-tkk ()
+      (cons 430675 2721866130))
+    ))
 
-(defun my-config/post-init-treemacs ()
+(defun zrquan-misc/post-init-treemacs ()
   "treemacs 配置"
   (setq-default treemacs-python-executable "c:/Program Files/Python/Python38/python.exe"))
 

@@ -1,0 +1,6 @@
+#+TITLE: Spacesmacs 配置
+
+* Keybindings
+* todo
+1. +性能优化, 关闭不需要的 minor mode+
+2. 根据显示器分辨率调整字体大小

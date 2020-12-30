@@ -31,11 +31,11 @@ values."
   (setq-default
    dotspacemacs-elpa-https t
    dotspacemacs-elpa-timeout 5
-   dotspacemacs-check-for-update nil
+   dotspacemacs-check-for-update t
    dotspacemacs-elpa-subdirectory nil
    dotspacemacs-editing-style 'vim
    dotspacemacs-verbose-loading nil
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner 'random
    dotspacemacs-startup-lists '((recents . 5)
                                 (projects . 7))
    dotspacemacs-startup-buffer-responsive t
@@ -44,8 +44,9 @@ values."
                          (apropospriate-light :location local))
    dotspacemacs-mode-line-theme 'doom
    dotspacemacs-colorize-cursor-according-to-state t
-   ;;dotspacemacs-default-font '("Jetbrains Mono"
-   ;;                            :size 24
+   ;; 设置默认字体会让`spacemacs//set-monospaced-font'失效
+   ;;dotspacemacs-default-font '("Source Code Pro"
+   ;;                            :size 10.0
    ;;                            :weight normal
    ;;                            :width normal)
    dotspacemacs-leader-key "SPC"

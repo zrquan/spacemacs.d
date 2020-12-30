@@ -33,12 +33,32 @@
   '(
     (org :location built-in)
     org-download
+    org-journal
     org-drill
+    ox-hugo
     org-super-agenda
     ))
 
+(defun zrquan-org/post-init-org-journal ()
+  (setq org-journal-dir "~/blog/content/journal")
+  (setq org-journal-file-format "%Y%m%d.org")
+  (setq org-journal-file-type 'monthly))
+
+(defun zrquan-org/post-init-ox-hugo ()
+  (push "html" org-hugo-external-file-extensions-allowed-for-copying))
+
 (defun zrquan-org/init-org-drill ()
-  "背单词")
+  "背单词"
+  (use-package org-drill
+    :config
+    (progn
+      (add-to-list 'org-modules 'org-drill)
+      (setq org-drill-add-random-noise-to-intervals-p t)
+      (setq org-drill-hint-separator "||")
+      (setq org-drill-left-cloze-delimiter "<[")
+      (setq org-drill-right-cloze-delimiter "]>")
+      (setq org-drill-learn-fraction 0.25)))
+  )
 
 (defun zrquan-org/post-init-org ()
   "Configuration of org mode"
@@ -63,7 +83,8 @@
        'org-babel-load-languages
        '((emacs-lisp . t)
          (python . t)
-         (eshell . t)))
+         (eshell . t)
+         (plantuml . t)))
 
       ;; keybindings
       ;;(spacemacs/set-leader-keys-for-major-mode 'org-mode "r" 'org-redisplay-inline-images)

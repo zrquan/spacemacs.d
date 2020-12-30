@@ -7,7 +7,12 @@
 3. +org-present+
 4. org-reveal
 5. org-download
+6. org-drill
 
 * todo
-1. org 代码块语言支持
+1. org 代码块语言支持(php)
 2. 自动补全优化
+3. org-download 使用 snipaste 作为截屏工具
+4. capture template
+5. hugo
+6. org-brain

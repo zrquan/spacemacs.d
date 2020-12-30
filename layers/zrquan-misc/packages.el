@@ -55,6 +55,7 @@
 
 (defun zrquan-misc/post-init-treemacs ()
   "treemacs 配置"
-  (setq-default treemacs-python-executable "c:/Program Files/Python/Python38/python.exe"))
+  (setq-default treemacs-python-executable "c:/Program Files/Python/Python38/python.exe")
+  (setq-default treemacs-width 30))
 
 ;;; packages.el ends here

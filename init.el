@@ -14,7 +14,8 @@ values."
    dotspacemacs-configuration-layers
    '(zrquan-misc
      zrquan-org)
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(company-posframe
+                                      ivy-posframe)
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages
    '(rainbow-delimiters evil-tutor evil-ediff
@@ -124,8 +125,21 @@ you should place your code here."
     (spacemacs//set-monospaced-font "Jetbrains Mono" "楷体" 18 22)
     )
 
+  ;; src block indentation / editing / syntax highlighting
+  (setq org-src-fontify-natively t
+        org-src-window-setup 'current-window ;; edit in current window
+        org-src-strip-leading-and-trailing-blank-lines t
+        org-src-preserve-indentation t ;; do not put two spaces on the left
+        org-src-tab-acts-natively t)
+
+  (ivy-posframe-mode t)
+  (company-posframe-mode t)
+  (add-hook 'org-mode-hook 'auto-fill-mode)
+
   (spacemacs/toggle-maximize-frame-on)
   (setq doom-modeline-modal-icon nil)
+  ;; only work for emacs27
+  (set-fontset-font t 'symbol "Segoe UI Emoji" nil 'append)
   )
 
 ;; load custom.el

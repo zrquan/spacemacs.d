@@ -14,6 +14,7 @@
    (ivy :variables
         ivy-enable-advanced-buffer-information t)
    (ranger :variables
+           ranger-override-dired 'deer
            ranger-show-preview t)
    (org :variables
         org-enable-hugo-support t
@@ -23,16 +24,19 @@
         org-enable-org-journal-support t)
 
    ;; programming
-   emacs-lisp
    lsp
+   emacs-lisp
    (python :variables
            python-backend 'lsp python-lsp-server 'pyright)
    html
    solidity
 
    ;; optional
+   csv
    unicode-fonts
    (chinese :variables
             chinese-enable-youdao-dict t)
-   plantuml
+   (plantuml :variables
+             plantuml-jar-path "~/.spacemacs.d/opt/plantuml.jar"
+             org-plantuml-jar-path "~/.spacemacs.d/opt/plantuml.jar")
    ))

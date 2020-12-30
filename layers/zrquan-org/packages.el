@@ -40,9 +40,9 @@
     ))
 
 (defun zrquan-org/post-init-org-journal ()
-  (setq org-journal-dir "~/blog/content/journal")
+  (setq org-journal-dir "~/org/journal")
   (setq org-journal-file-format "%Y%m%d.org")
-  (setq org-journal-file-type 'monthly))
+  (setq org-journal-file-type 'weekly))
 
 (defun zrquan-org/post-init-ox-hugo ()
   (push "html" org-hugo-external-file-extensions-allowed-for-copying))
@@ -77,7 +77,7 @@
 
       (setq org-todo-keywords
             '((sequence "TODO(t)" "WAIT(w)" "SOMEDAY(s)" "|" "DONE(d!)" "CANCELED(c@/!)")))
-      (setq org-superstar-headline-bullets-list '("¶" "◉" "○" "§"))
+      (setq org-superstar-headline-bullets-list '("¶" "◉" "○" "※"))
 
       (org-babel-do-load-languages
        'org-babel-load-languages

@@ -14,8 +14,7 @@ values."
    dotspacemacs-configuration-layers
    '(zrquan-misc
      zrquan-org)
-   dotspacemacs-additional-packages '(company-posframe
-                                      ivy-posframe)
+   dotspacemacs-additional-packages '(company-posframe)
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages
    '(rainbow-delimiters evil-tutor evil-ediff
@@ -133,10 +132,11 @@ you should place your code here."
         org-src-preserve-indentation t ;; do not put two spaces on the left
         org-src-tab-acts-natively t)
 
-  (ivy-posframe-mode t)
   (company-posframe-mode t)
+  (setq company-posframe-show-indicator nil)
   (add-hook 'org-mode-hook 'auto-fill-mode)
 
+  (spacemacs/toggle-vi-tilde-fringe-off)
   (spacemacs/toggle-maximize-frame-on)
   (setq doom-modeline-modal-icon nil)
   ;; only work for emacs27

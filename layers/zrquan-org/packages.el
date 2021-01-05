@@ -64,16 +64,19 @@
   "Configuration of org mode"
   (with-eval-after-load 'org
     (progn
+      (setq org-tags-column 0)
       (setq org-hide-emphasis-markers t)
       (setq indent-tabs-mode nil)
       (setq org-startup-indented t)
       (setq org-agenda-files '("~/org/gtd/"))
 
-      ;;(setq org-capture-templates
-      ;;      '(("i" "Inbox" entry (file "~/org/gtd/inbox.org")
-      ;;         "* TODO %?\n %i\n")
-      ;;        ("n" "Quick Note" entry (file "~/org/notes/quick-notes.org")
-      ;;         "* %?\n%x\n")))
+      (setq org-capture-templates
+            '(("i" "Inbox" entry (file "~/org/gtd/inbox.org")
+               "* TODO %?\n %i\n")
+              ("n" "Quick Note" entry (file "~/org/brain/quick-notes.org")
+               "* %?\n%x\n" :jump-to-captured t)
+              ("w" "English Words" entry (file "~/org/brain/english/words.org")
+               "")))
 
       (setq org-todo-keywords
             '((sequence "TODO(t)" "WAIT(w)" "SOMEDAY(s)" "|" "DONE(d!)" "CANCELED(c@/!)")))
@@ -87,7 +90,7 @@
          (plantuml . t)))
 
       ;; keybindings
-      ;;(spacemacs/set-leader-keys-for-major-mode 'org-mode "r" 'org-redisplay-inline-images)
+      (spacemacs/set-leader-keys-for-major-mode 'org-mode "or" 'org-redisplay-inline-images)
       )))
 
 (defun zrquan-org/post-init-org-download ()
@@ -109,6 +112,7 @@
                    :tag "work")
             (:priority<= "B"
                   :scheduled future)))
-    (add-hook 'org-agenda-mode-hook 'org-super-agenda-mode)))
+    (add-hook 'org-agenda-mode-hook 'org-super-agenda-mode)
+    ))
 
 ;;; packages.el ends here

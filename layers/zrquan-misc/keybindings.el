@@ -6,8 +6,9 @@
 
 ;; chinese layer keybindings
 (if (configuration-layer/layer-usedp 'chinese)
-  (spacemacs/set-leader-keys "oy" 'youdao-dictionary-search-at-point-posframe)
-  (spacemacs/set-leader-keys "oi" 'youdao-dictionary-search-from-input))
+    (progn
+      (spacemacs/set-leader-keys "oy" 'youdao-dictionary-search-at-point-posframe)
+      (spacemacs/set-leader-keys "oi" 'youdao-dictionary-search-from-input)))
 
 (spacemacs/set-leader-keys
   "or" 'ranger

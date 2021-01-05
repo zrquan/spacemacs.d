@@ -30,7 +30,7 @@ values."
   (setq-default
    dotspacemacs-elpa-https t
    dotspacemacs-elpa-timeout 5
-   dotspacemacs-check-for-update t
+   dotspacemacs-check-for-update nil
    dotspacemacs-elpa-subdirectory nil
    dotspacemacs-editing-style 'vim
    dotspacemacs-verbose-loading nil
@@ -132,9 +132,12 @@ you should place your code here."
         org-src-preserve-indentation t ;; do not put two spaces on the left
         org-src-tab-acts-natively t)
 
+  ;;(add-to-list 'company-backends 'company-emoji)
   (company-posframe-mode t)
   (setq company-posframe-show-indicator nil)
   (add-hook 'org-mode-hook 'auto-fill-mode)
+
+  (setq treemacs-no-png-images t)
 
   (spacemacs/toggle-vi-tilde-fringe-off)
   (spacemacs/toggle-maximize-frame-on)

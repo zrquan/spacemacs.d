@@ -1,15 +1,15 @@
-* 网络安全                                                           :elfeed:
+* 网络安全 :elfeed:
 ** 情报
-*** http://nvd.nist.gov/download/nvd-rss.xml                  :cve:ignore:
-*** https://cxsecurity.com/cverss/fullmap/                           :cve:
+*** http://nvd.nist.gov/download/nvd-rss.xml :cve:ignore:
+*** https://cxsecurity.com/cverss/fullmap/ :cve:
 *** https://feed43.com/2542442350802177.xml
 *** https://www.sec-wiki.com/news/rss
 ** 个人博客
 *** https://www.leavesongs.com/rss/
 *** https://payloads.online/feed.xml
-*** https://kingx.me/feed.xml                                    :redteam:
-*** https://riccardoancarani.github.io/feed.xml                  :redteam:
-** https://portswigger.net/research/rss                                :web:
+*** https://kingx.me/feed.xml :redteam:
+*** https://riccardoancarani.github.io/feed.xml :redteam:
+** https://portswigger.net/research/rss :web:
 ** https://paper.seebug.org/rss/
 ** http://security.tencent.com/index.php/feed/blog/0
 ** http://blog.topsec.com.cn/feed/

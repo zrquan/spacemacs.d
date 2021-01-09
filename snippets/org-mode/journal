@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: hugo journal
+# key: hjo
+# --
+#+TITLE: ${1:20210101}
+#+hugo_base_dir: ~/hugo/
+#+hugo_section: journal
+#+hugo_custom_front_matter: :hideReadMore true
+
+<!--more-->
+
+$0

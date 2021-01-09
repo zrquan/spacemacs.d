@@ -39,8 +39,12 @@ values."
                                 (projects . 7))
    dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'text-mode
-   dotspacemacs-themes '((apropospriate-dark :location local)
-                         (apropospriate-light :location local))
+   dotspacemacs-themes '((apropospriate-dark :location
+                                             (recipe :fetcher github
+                                                     :repo "zrquan/apropospriate-theme"))
+                         (apropospriate-light :location
+                                             (recipe :fetcher github
+                                                     :repo "zrquan/apropospriate-theme")))
    dotspacemacs-mode-line-theme 'doom
    dotspacemacs-colorize-cursor-according-to-state t
    ;; 设置默认字体会让`spacemacs//set-monospaced-font'失效
@@ -134,7 +138,6 @@ you should place your code here."
 
   ;;(add-to-list 'company-backends 'company-emoji)
   (company-posframe-mode t)
-  (setq company-posframe-show-indicator nil)
   (add-hook 'org-mode-hook 'auto-fill-mode)
 
   (setq treemacs-no-png-images t)

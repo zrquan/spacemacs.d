@@ -129,6 +129,8 @@ you should place your code here."
     (spacemacs//set-monospaced-font "Jetbrains Mono" "楷体" 18 22)
     )
 
+  (setq org-brain-file-entries-use-title nil)
+  (setq org-extend-today-until 6)
   ;; src block indentation / editing / syntax highlighting
   (setq org-src-fontify-natively t
         org-src-window-setup 'current-window ;; edit in current window

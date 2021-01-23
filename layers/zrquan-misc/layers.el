@@ -34,9 +34,9 @@
    solidity
 
    ;; optional
-   ;;games
    (elfeed :variables
            rmh-elfeed-org-files '("~/.spacemacs.d/elfeed.org"))
+   prodigy
    csv
    unicode-fonts
    (chinese :variables

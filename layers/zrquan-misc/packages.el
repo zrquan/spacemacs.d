@@ -33,6 +33,7 @@
   '(
     evil
     treemacs
+    prodigy
     go-translate
     ))
 
@@ -58,4 +59,15 @@
   (setq-default treemacs-python-executable "c:/Program Files/Python/Python38/python.exe")
   (setq-default treemacs-width 30))
 
+(defun zrquan-misc/post-init-prodigy ()
+  (progn
+    (prodigy-define-service
+      :name "Hugo Server"
+      :command "hugo"
+      :args '("server" "-D" "-w")
+      :cwd "~/hugo"
+      :tags '(hugo server)
+      :kill-signal 'sigkill
+      :kill-process-buffer-on-stop t)
+    ))
 ;;; packages.el ends here

@@ -67,16 +67,23 @@
       (setq org-tags-column 0)
       (setq org-hide-emphasis-markers t)
       (setq indent-tabs-mode nil)
+      (setq org-startup-with-inline-images nil)
       (setq org-startup-indented t)
-      (setq org-agenda-files '("~/org/gtd/"))
+      (setq org-agenda-files '("~/org/agenda/"))
 
       (setq org-capture-templates
-            '(("i" "Inbox" entry (file "~/org/gtd/inbox.org")
-               "* TODO %?\n %i\n")
-              ("n" "Quick Note" entry (file "~/org/brain/quick-notes.org")
-               "* %?\n%x\n" :jump-to-captured t)
-              ("w" "English Words" entry (file "~/org/brain/english/words.org")
-               "")))
+            '(("i" "Inbox" entry
+               (file "~/org/agenda/inbox.org")
+               "* TODO %^{something}")
+              ("p" "编程笔记" entry
+               (file "~/org/brain/programing/captures.org")
+               "* %^{headline}\n%?"
+               :empty-lines-after 1
+               :kill-buffer t)
+              ("s" "安全笔记" entry
+               (file "~/org/brain/security/captures.org")
+               "* %^{headline}\n%?"
+               :kill-buffer t)))
 
       (setq org-todo-keywords
             '((sequence "TODO(t)" "WAIT(w)" "SOMEDAY(s)" "|" "DONE(d!)" "CANCELED(c@/!)")))

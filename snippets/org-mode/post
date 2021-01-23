@@ -8,7 +8,6 @@
 #+hugo_tags: ${3:tags}
 #+hugo_publishdate: ${4:timestamp}
 
-$3
 <!--more-->
 
 $0

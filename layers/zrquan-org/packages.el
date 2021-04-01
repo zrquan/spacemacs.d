@@ -34,10 +34,16 @@
     (org :location built-in)
     org-download
     org-journal
-    org-drill
     ox-hugo
     org-super-agenda
+    org-roam
     ))
+
+(defun zrquan-org/post-init-org-roam ()
+  (setq org-roam-directory "c:/Users/26299/org/brain")
+  (setq org-roam-server-mode t)
+  (setq org-roam-server-port 1818)
+  (setq org-roam-title-sources '((title) alias)))
 
 (defun zrquan-org/post-init-org-journal ()
   (setq org-journal-dir "~/org/journal")
@@ -47,19 +53,6 @@
 (defun zrquan-org/post-init-ox-hugo ()
   (push "html" org-hugo-external-file-extensions-allowed-for-copying))
 
-(defun zrquan-org/init-org-drill ()
-  "背单词"
-  (use-package org-drill
-    :config
-    (progn
-      (add-to-list 'org-modules 'org-drill)
-      (setq org-drill-add-random-noise-to-intervals-p t)
-      (setq org-drill-hint-separator "||")
-      (setq org-drill-left-cloze-delimiter "<[")
-      (setq org-drill-right-cloze-delimiter "]>")
-      (setq org-drill-learn-fraction 0.25)))
-  )
-
 (defun zrquan-org/post-init-org ()
   "Configuration of org mode"
   (with-eval-after-load 'org
@@ -67,7 +60,6 @@
       (setq org-tags-column 0)
       (setq org-hide-emphasis-markers t)
       (setq indent-tabs-mode nil)
-      (setq org-startup-with-inline-images nil)
       (setq org-startup-indented t)
       (setq org-agenda-files '("~/org/agenda/"))
 
@@ -88,6 +80,8 @@
       (setq org-todo-keywords
             '((sequence "TODO(t)" "WAIT(w)" "SOMEDAY(s)" "|" "DONE(d!)" "CANCELED(c@/!)")))
       (setq org-superstar-headline-bullets-list '("¶" "◉" "○" "※"))
+
+      (add-hook 'org-mode-hook 'auto-fill-mode)
 
       (org-babel-do-load-languages
        'org-babel-load-languages

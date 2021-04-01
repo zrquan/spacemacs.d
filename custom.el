@@ -5,15 +5,17 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(dap-auto-configure-features '(locals controls tooltip))
- '(dap-auto-show-output nil)
- '(dap-ui-many-windows-mode nil)
- '(display-time-24hr-format t)
- '(display-time-day-and-date nil)
- '(display-time-default-load-average nil)
- '(display-time-format nil)
- '(evil-undo-system 'undo-tree)
+ '(ansi-color-names-vector
+   ["#FFFFF0" "#FF1744" "#66BB6A" "#F57F17" "#42A5F5" "#7E57C2" "#0097A7" "#546E7A"])
+ '(beacon-color "#F8BBD0")
+ '(custom-safe-themes
+   '("01606f56025f54892fd2a2d33663a9020020a52d778839cb40af6ee5ffa333c4" default))
+ '(eaf-proxy-host "127.0.0.1")
+ '(eaf-proxy-port "10808")
+ '(eaf-proxy-type "socks5")
+ '(eaf-python-command "python.exe")
  '(evil-want-Y-yank-to-eol nil)
+ '(highlight-indent-guides-auto-enabled nil)
  '(hl-todo-keyword-faces
    '(("TODO" . "#dc752f")
      ("NEXT" . "#dc752f")
@@ -30,30 +32,10 @@
      ("FIXME" . "#dc752f")
      ("XXX+" . "#dc752f")
      ("\\?\\?\\?+" . "#dc752f")))
- '(ivy-posframe-border-width 1)
- '(linum-format "%3i")
- '(org-brain-refile-max-level 1)
- '(org-display-remote-inline-images 'cache)
- '(org-download-abbreviate-filename-function 'expand-file-name)
- '(org-download-display-inline-images nil)
- '(org-download-image-dir "~/org/images" t)
- '(org-download-image-org-width 400 t)
- '(org-download-screenshot-method "i_view64 /capture=4 /convert=\"%s\"")
- '(org-hugo-date-format "%Y-%m-%d")
- '(org-hugo-preserve-filling t)
- '(org-image-actual-width nil)
- '(org-journal-dir "~/org/journal/" t)
- '(org-re-reveal-root "file:///c:/Users/26299/.spacemacs.d/opt/reveal.js")
- '(org-src-tab-acts-natively nil)
- '(org-startup-folded 'content)
- '(org-startup-with-inline-images t)
+ '(org-hide-block-startup t)
  '(package-selected-packages
-   '(prodigy tide typescript-mode tern import-js grizzl helm-gtags ggtags counsel-gtags add-node-modules-path typit mmt sudoku pacmacs 2048-game cfrs org-pandoc-import apropospriate-theme company-posframe emoji-fontset ivy-emoji verb csv-mode nyan-mode org-id-cleanup persist ox-hugo org-drill ox-twbs org-sticky-header org-re-reveal org-journal emacsql-sqlite3 emacsql web-mode tagedit slim-mode scss-mode sass-mode pug-mode impatient-mode haml-mode emmet-mode counsel-css company-web web-completion-data ligature solidity-flycheck solidity-mode doom-modeline ox-reveal pyim pyim-basedict xr pangu-spacing find-by-pinyin-dired chinese-conv ace-pinyin pinyinlib rainbow-mode apropospriate org-roam go-translate evil-vimish-fold vimish-fold elfeed-web elfeed-org elfeed-goodies ace-jump-mode noflet elfeed ivy-rich unicode-fonts ucs-utils font-utils persistent-soft ivy-posframe prettier-js nodejs-repl json-navigator hierarchy wgrep smex lsp-ivy ivy-yasnippet ivy-xref ivy-purpose ivy-hydra ivy-avy counsel-projectile counsel swiper mvn meghanada maven-test-mode lsp-java groovy-mode groovy-imports pcache lsp-ui lsp-python-ms lsp-pyright lsp-origami helm-lsp dap-mode posframe lsp-treemacs bui lsp-mode treemacs-all-the-icons nameless mmm-mode markdown-toc magit-svn magit-section importmagic epc ctable concurrent deferred helm-xref helm-purpose window-purpose imenu-list helm-org-rifle helm-org helm-ls-git helm-git-grep gitignore-templates gh-md flycheck-elsa evil-textobj-line evil-org evil-lion evil-goggles editorconfig devdocs centered-cursor-mode blacken hybrid-mode font-lock+ dotenv-mode shrink-path prettify-utils all-the-icons-ivy ivy all-the-icons-dired zenburn-theme zen-and-art-theme white-sand-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rebecca-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme modus-vivendi-theme modus-operandi-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme kaolin-themes jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme farmhouse-theme eziam-theme exotica-theme espresso-theme dracula-theme doom-themes django-theme darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme chocolate-theme autothemer cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme yasnippet-snippets writeroom-mode visual-fill-column treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil treemacs pfuture terminal-here symon symbol-overlay string-inflection sphinx-doc spaceline-all-the-icons all-the-icons memoize plantuml-mode pippel pipenv password-generator overseer org-superstar org-rich-yank org-cliplink org-brain flycheck-package evil-cleverparens emr clang-format list-utils markdown-mode org-super-agenda ts ht ranger emoji-cheat-sheet-plus company-emoji web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode origami graphviz-dot-mode company-quickhelp yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic youdao-dictionary names chinese-word-at-point unfill mwim flycheck-pos-tip pos-tip flycheck xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy evil-magit magit git-commit with-editor transient company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete arc-dark-theme spaceline paradox hydra highlight-numbers helm-projectile projectile flx-ido evil-unimpaired f evil-search-highlight-persist evil-lisp-state ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org powerline restart-emacs request rainbow-delimiters pkg-info popwin persp-mode pcre2el spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide lv hungry-delete hl-todo highlight-parentheses parent-mode highlight-indentation helm-themes helm-swoop epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))
- '(paradox-github-token t)
- '(pdf-view-midnight-colors '("#b2b2b2" . "#292b2e"))
- '(plantuml-default-exec-mode 'jar)
- '(plantuml-java-args
-   '("-Djava.awt.headless=true" "-jar" "--illegal-access=deny" "-charset UTF-8"))
+   '(apropospriate-theme sis org-superstar org-roam-bibtex org-roam-server org-roam emacsql-sqlite3 emacsql easy-hugo toml-mode ron-mode racer helm-core ggtags flycheck-rust counsel-gtags cargo rust-mode modern-fringes git-gutter-fringe git-gutter highlight-indent-guides youdao-dictionary yasnippet-snippets yapfify xterm-color ws-butler writeroom-mode winum which-key wgrep web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unicode-fonts unfill undo-tree treemacs-projectile treemacs-persp treemacs-magit treemacs-evil toc-org terminal-here tagedit symon symbol-overlay string-inflection sphinx-doc spaceline-all-the-icons smex smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs request ranger rainbow-mode pytest pyim pyenv-mode py-isort pug-mode prodigy prettier-js plantuml-mode pippel pipenv pip-requirements pcre2el password-generator paradox pangu-spacing ox-twbs ox-hugo overseer org-super-agenda org-rich-yank org-re-reveal org-pomodoro org-mime org-journal org-download org-cliplink org-brain open-junk-file nodejs-repl nameless mwim multi-term move-text magit-svn magit-section magit-gitflow macrostep lsp-ui lsp-python-ms lsp-pyright lsp-origami lsp-ivy lorem-ipsum livid-mode live-py-mode link-hint json-navigator json-mode js2-refactor js-doc ivy-yasnippet ivy-xref ivy-rich ivy-purpose ivy-hydra ivy-avy indent-guide importmagic impatient-mode ibuffer-projectile hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation golden-ratio go-translate gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ fuzzy font-lock+ flycheck-pos-tip flycheck-package flycheck-elsa flx-ido find-by-pinyin-dired fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emr emmet-mode elisp-slime-nav elfeed-org elfeed-goodies editorconfig dumb-jump dotenv-mode doom-modeline diminish devdocs define-word dap-mode cython-mode csv-mode counsel-projectile counsel-css company-web company-posframe company-box column-enforce-mode clean-aindent-mode chinese-conv centered-cursor-mode browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-compile anaconda-mode aggressive-indent ace-pinyin ace-link ac-ispell))
+ '(rainbow-x-colors nil)
  '(safe-local-variable-values
    '((eval when
            (require 'rainbow-mode nil t)
@@ -61,15 +43,12 @@
      (javascript-backend . tide)
      (javascript-backend . tern)
      (javascript-backend . lsp)))
- '(yas-snippet-dirs
-   '("c:/Users/26299/.spacemacs.d/snippets/" "c:/Users/26299/.emacs.d/private/snippets/" "c:/Users/26299/.emacs.d/layers/+completion/auto-completion/local/snippets" yasnippet-snippets-dir) t))
+ '(tabbar-background-color "#ffffffffffff"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(breakpoint-disabled ((t (:background "IndianRed3" :foreground "IndianRed3"))))
- '(dap-ui-breakpoint-verified-fringe ((t (:background "sea green" :foreground "sea green" :weight bold))))
- '(fixed-pitch ((t (:family "JetBrains Mono"))))
- '(org-tag ((t (:foreground "#757575" :weight bold :height 0.8))))
- '(youdao-dictionary-posframe-tip-face ((t (:background "LemonChiffon2" :foreground "black")))))
+ '(breakpoint-disabled ((t (:background "indian red" :foreground "indian red"))))
+ '(dap-ui-breakpoint-verified-fringe ((t (:background "medium sea green" :foreground "medium sea green"))))
+ '(doom-modeline-debug-visual ((t (:background "dark slate blue")))))

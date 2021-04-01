@@ -7,37 +7,75 @@
 You should not put any user code in this function besides modifying the variable
 values."
   (setq-default
-   dotspacemacs-distribution 'spacemacs
-   dotspacemacs-enable-lazy-installation 'unused
-   dotspacemacs-ask-for-lazy-installation t
    dotspacemacs-configuration-layer-path '("~/.spacemacs.d/layers/")
    dotspacemacs-configuration-layers
-   '(zrquan-misc
-     zrquan-org)
-   dotspacemacs-additional-packages '(company-posframe)
-   dotspacemacs-frozen-packages '()
+   '(rust
+     ;; my layers
+     zrquan-misc
+     zrquan-org
+
+     ;; core
+     (git :variables
+           magit-push-always-verify nil
+           magit-save-repository-buffers 'dontask
+           magit-revert-buffers 'silent
+           magit-refs-show-commit-count 'all)
+     (version-control :variables
+                      version-control-diff-tool 'git-gutter)
+     ivy
+     shell
+     better-defaults
+     (auto-completion :variables
+                       auto-completion-enable-snippets-in-popup t
+                       auto-completion-use-company-box t
+                       auto-completion-enable-sort-by-usage t)
+     (ranger :variables
+             ranger-override-dired 'deer
+             ranger-show-preview t)
+     (org :variables
+           org-enable-hugo-support t
+           org-enable-roam-support t
+           org-enable-bootstrap-support t
+           org-enable-reveal-js-support t
+           org-enable-org-journal-support t)
+
+     ;; programming
+     lsp
+     (syntax-checking :variables
+                       syntax-checking-use-original-bitmaps t)
+     emacs-lisp
+     (python :variables
+             python-backend 'lsp python-lsp-server 'pyright)
+     (javascript :variables javascript-backend 'lsp)
+     html
+
+     ;; optional
+     ibuffer
+     prodigy
+     csv
+     unicode-fonts
+     (chinese :variables
+               chinese-enable-youdao-dict t)
+     (plantuml :variables
+               plantuml-jar-path "~/.spacemacs.d/opt/plantuml.jar"
+               org-plantuml-jar-path "~/.spacemacs.d/opt/plantuml.jar")
+     )
+   dotspacemacs-additional-packages '(rainbow-mode)
    dotspacemacs-excluded-packages
-   '(rainbow-delimiters evil-tutor evil-ediff
-     evil-lion google-translate)
-   dotspacemacs-install-packages 'used-only))
+   '(rainbow-delimiters google-translate
+     evil-tutor evil-ediff evil-lion
+     company-statistics company-anaconda helm-make
+     spacemacs-theme org-present orgit
+     org-projectile org-brain)
+   ))
 
 (defun dotspacemacs/init ()
-  "Initialization function.
-This function is called at the very startup of Spacemacs initialization
-before layers configuration.
-You should not put any user code in there besides modifying the variable
-values."
+  "Instantiate Spacemacs core settings.
+All `dotspacemacs-' variables with values set different than their defaults.
+They are all defined in `~/.emacs.d/core/core-dotspacemacs.el'.
+Check `dotspacemacs/get-variable-string-list' for all vars you can configure."
   (setq-default
-   dotspacemacs-elpa-https t
-   dotspacemacs-elpa-timeout 5
-   dotspacemacs-check-for-update nil
-   dotspacemacs-elpa-subdirectory nil
-   dotspacemacs-editing-style 'vim
-   dotspacemacs-verbose-loading nil
    dotspacemacs-startup-banner 'random
-   dotspacemacs-startup-lists '((recents . 5)
-                                (projects . 7))
-   dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'text-mode
    dotspacemacs-themes '((apropospriate-dark :location
                                              (recipe :fetcher github
@@ -46,55 +84,17 @@ values."
                                              (recipe :fetcher github
                                                      :repo "zrquan/apropospriate-theme")))
    dotspacemacs-mode-line-theme 'doom
-   dotspacemacs-colorize-cursor-according-to-state t
-   ;; 设置默认字体会让`spacemacs//set-monospaced-font'失效
-   ;;dotspacemacs-default-font '("Source Code Pro"
-   ;;                            :size 10.0
-   ;;                            :weight normal
-   ;;                            :width normal)
+   ;; correctly invoke `spacemacs//set-monospaced-font'
+   dotspacemacs-default-font nil
+   dotspacemacs-enable-server t
+   dotspacemacs-persistent-server t
+   ;; important!
+   dotspacemacs-elpa-subdirectory nil
+   ;; pass `dotspacemacs/test-dotfile'
+   dotspacemacs-editing-style 'vim
    dotspacemacs-leader-key "SPC"
    dotspacemacs-emacs-command-key "SPC"
-   dotspacemacs-ex-command-key ":"
    dotspacemacs-emacs-leader-key "M-m"
-   dotspacemacs-major-mode-leader-key ","
-   dotspacemacs-major-mode-emacs-leader-key "C-M-m"
-   dotspacemacs-distinguish-gui-tab nil
-   dotspacemacs-remap-Y-to-y$ nil
-   dotspacemacs-retain-visual-state-on-shift t
-   dotspacemacs-visual-line-move-text nil
-   dotspacemacs-ex-substitute-global nil
-   dotspacemacs-default-layout-name "Default"
-   dotspacemacs-display-default-layout nil
-   dotspacemacs-auto-resume-layouts nil
-   dotspacemacs-large-file-size 1
-   dotspacemacs-auto-save-file-location 'cache
-   dotspacemacs-max-rollback-slots 5
-   dotspacemacs-helm-resize nil
-   dotspacemacs-helm-no-header nil
-   dotspacemacs-helm-position 'bottom
-   dotspacemacs-helm-use-fuzzy 'always
-   dotspacemacs-enable-paste-transient-state nil
-   dotspacemacs-which-key-delay 0.4
-   dotspacemacs-which-key-position 'bottom
-   dotspacemacs-loading-progress-bar t
-   dotspacemacs-fullscreen-at-startup nil
-   dotspacemacs-fullscreen-use-non-native nil
-   dotspacemacs-maximized-at-startup nil
-   dotspacemacs-active-transparency 95
-   dotspacemacs-inactive-transparency 90
-   dotspacemacs-show-transient-state-title t
-   dotspacemacs-show-transient-state-color-guide t
-   dotspacemacs-mode-line-unicode-symbols nil
-   dotspacemacs-smooth-scrolling t
-   dotspacemacs-line-numbers nil
-   dotspacemacs-folding-method 'origami
-   dotspacemacs-smartparens-strict-mode nil
-   dotspacemacs-smart-closing-parenthesis nil
-   dotspacemacs-highlight-delimiters 'all
-   dotspacemacs-persistent-server nil
-   dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
-   dotspacemacs-default-package-repository nil
-   dotspacemacs-whitespace-cleanup nil
    ))
 
 (defun dotspacemacs/user-init ()
@@ -117,19 +117,6 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (with-eval-after-load 'dap-mode
-    (setq dap-ui-many-windows-mode nil))
-
-  (with-eval-after-load 'lsp
-    (setq lsp-auto-guess-root t))
-
-  (if (= 2560 (nth 3 (car (frame-monitor-attributes))))
-    (spacemacs//set-monospaced-font "Jetbrains Mono" "楷体" 24 28)
-    ;; (= 1920 (nth 3 (car (frame-monitor-attributes))))
-    (spacemacs//set-monospaced-font "Jetbrains Mono" "楷体" 18 22)
-    )
-
-  (setq org-brain-file-entries-use-title nil)
   (setq org-extend-today-until 6)
   ;; src block indentation / editing / syntax highlighting
   (setq org-src-fontify-natively t
@@ -138,17 +125,51 @@ you should place your code here."
         org-src-preserve-indentation t ;; do not put two spaces on the left
         org-src-tab-acts-natively t)
 
-  ;;(add-to-list 'company-backends 'company-emoji)
-  (company-posframe-mode t)
-  (add-hook 'org-mode-hook 'auto-fill-mode)
-
   (setq treemacs-no-png-images t)
+  (setq warning-minimum-level :error)
 
-  (spacemacs/toggle-vi-tilde-fringe-off)
-  (spacemacs/toggle-maximize-frame-on)
-  (setq doom-modeline-modal-icon nil)
-  ;; only work for emacs27
-  (set-fontset-font t 'symbol "Segoe UI Emoji" nil 'append)
+  ;; EAF
+  (use-package eaf
+    :load-path "~/.emacs.d/elpa/emacs-application-framework" ; Set to "/usr/share/emacs/site-lisp/eaf" if installed from AUR
+    :init
+    (use-package epc :defer t :ensure t)
+    (use-package ctable :defer t :ensure t)
+    (use-package deferred :defer t :ensure t)
+    (use-package s :defer t :ensure t)
+    :custom
+    (eaf-browser-continue-where-left-off t)
+    :config
+    (eaf-setq eaf-browser-enable-adblocker "true")
+    (eaf-setq eaf-browser-dark-mode "false")
+    (setq browse-url-browser-function 'eaf-open-browser)
+    (defalias 'browse-web #'eaf-open-browser)
+    (eaf-bind-key nil "M-q" eaf-browser-keybinding)) ;; unbind, see more in the Wiki
+
+  ;; eaf-evil
+  (require 'eaf-evil)
+  (setq eaf-evil-leader-keymap  spacemacs-cmds)
+  (define-key key-translation-map (kbd "SPC")
+    (lambda (prompt)
+      (if (derived-mode-p 'eaf-mode)
+          (pcase eaf--buffer-app-name
+            ("browser" (if (string= (eaf-call-sync "call_function" eaf--buffer-id "is_focus") "True")
+                           (kbd "SPC")
+                         (kbd eaf-evil-leader-key)))
+            ("pdf-viewer" (kbd eaf-evil-leader-key))
+            ("image-viewer" (kbd eaf-evil-leader-key))
+            (_  (kbd "SPC")))
+        (kbd "SPC"))))
+
+  ;; 仅在第一次打开frame时执行
+  (spacemacs|do-after-display-system-init
+   (spacemacs//set-monospaced-font "Jetbrains Mono" "楷体" 20 24)
+   ;; support emoji, only work for emacs27+
+   (set-fontset-font t 'symbol "Segoe UI Emoji" nil 'append)
+   (setq doom-modeline-modal-icon nil)
+   (setq org-startup-with-inline-images nil)
+   (spacemacs/toggle-vi-tilde-fringe-off)
+   (spacemacs/load-spacemacs-env)
+   )
   )
 
 ;; load custom.el

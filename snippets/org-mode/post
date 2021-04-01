@@ -4,9 +4,10 @@
 # --
 #+TITLE: ${1:article title}
 #+hugo_base_dir: ~/hugo/
-#+hugo_draft: ${2:true||false}
-#+hugo_tags: ${3:tags}
-#+hugo_publishdate: ${4:timestamp}
+#+hugo_locale: zh_CH
+#+hugo_draft: true
+#+hugo_tags: ${2:tags}
+#+hugo_publishdate: ${3:timestamp}
 
 <!--more-->
 

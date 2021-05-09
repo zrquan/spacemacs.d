@@ -14,7 +14,7 @@
  (define-fringe-bitmap 'left-arrow
    [0 32 96 218 218 96 32 0])
 
- (zrquan/set-chinese-font "楷体" 22)
+ (zrquan/set-chinese-font "楷体" 24)
  ;; support emoji, only work for emacs27+
  (set-fontset-font t 'symbol "Segoe UI Emoji" nil 'append)
  )

@@ -2,6 +2,9 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
+(defconst linux?   (eq system-type 'gnu/linux)  "Are you on a linux system?")
+(defconst windows? (eq system-type 'windows-nt) "Are you on windows system?")
+
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
@@ -12,7 +15,8 @@ values."
    '((zrquan-misc        :location local)
      (zrquan-org         :location local)
      (zrquan-programming :location local))
-   dotspacemacs-additional-packages '(rainbow-mode)
+   dotspacemacs-additional-packages
+   '(rainbow-mode)
    dotspacemacs-excluded-packages
    '(rainbow-delimiters google-translate helm-make
      evil-tutor org-present orgit org-projectile org-brain)
@@ -35,18 +39,18 @@ Check `dotspacemacs/get-variable-string-list' for all vars you can configure."
    dotspacemacs-line-numbers t
    ;; correctly invoke `spacemacs//set-monospaced-font'
    dotspacemacs-default-font '("Jetbrains Mono"
-                               :size 18)
-   dotspacemacs-active-transparency 95
+                               :size 20)
+   dotspacemacs-active-transparency   95
    dotspacemacs-inactive-transparency 70
-   ;;dotspacemacs-enable-server t
-   ;;dotspacemacs-persistent-server t
+   dotspacemacs-enable-server         linux?
+   dotspacemacs-persistent-server     linux?
    ;; important!
    dotspacemacs-elpa-subdirectory nil
    ;; pass `dotspacemacs/test-dotfile'
-   dotspacemacs-editing-style 'vim
-   dotspacemacs-leader-key "SPC"
+   dotspacemacs-editing-style     'vim
+   dotspacemacs-leader-key        "SPC"
    dotspacemacs-emacs-command-key "SPC"
-   dotspacemacs-emacs-leader-key "M-m"
+   dotspacemacs-emacs-leader-key  "M-m"
    ))
 
 (defun dotspacemacs/user-init ()
@@ -78,7 +82,7 @@ you should place your code here."
 
   ;; EAF
   (use-package eaf
-    :load-path "~/.emacs.d/private/local/emacs-application-framework" ; Set to "/usr/share/emacs/site-lisp/eaf" if installed from AUR
+    :load-path "~/.emacs.d/private/local/emacs-application-framework"
     :init
     (use-package epc :defer t :ensure t)
     (use-package ctable :defer t :ensure t)
@@ -115,6 +119,7 @@ you should place your code here."
    (setq doom-modeline-modal-icon nil)
    (setq doom-modeline-buffer-state-icon nil)
    (spacemacs/toggle-vi-tilde-fringe-off)
+   (spacemacs/load-spacemacs-env)
    )
   )
 

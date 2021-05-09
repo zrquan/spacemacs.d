@@ -70,6 +70,7 @@
     (progn
       (setq org-tags-column 0)
       (setq org-hide-emphasis-markers t)
+      (setq org-hide-leading-stars t)
       (setq indent-tabs-mode nil)
       (setq org-startup-with-inline-images nil)
       (setq org-agenda-files '("~/org/agenda/"))

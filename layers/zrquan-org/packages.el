@@ -33,25 +33,36 @@
   '(
     (org :location built-in)
     org-download
-    org-journal
     ox-hugo
     org-super-agenda
     org-roam
     ))
 
 (defun zrquan-org/post-init-org-roam ()
-  (setq org-roam-directory "c:/Users/26299/org/brain")
-  (setq org-roam-server-mode t)
-  (setq org-roam-server-port 1818)
+  (setq org-roam-directory "c:/Users/26299/org/roam")
+  (setq org-roam-capture-templates
+        '(("d" "default" plain #'org-roam-capture--get-point
+           "%?"
+           :file-name "${slug}"
+           :head "#+title: ${title}\n"
+           :immediate-finish t
+           :unnarrowed t)))
   (setq org-roam-title-sources '((title) alias)))
-
-(defun zrquan-org/post-init-org-journal ()
-  (setq org-journal-dir "~/org/journal")
-  (setq org-journal-file-format "%Y%m%d.org")
-  (setq org-journal-file-type 'weekly))
 
 (defun zrquan-org/post-init-ox-hugo ()
   (push "html" org-hugo-external-file-extensions-allowed-for-copying))
+
+(defun zrquan-org/pre-init-org ()
+  (setq org-structure-template-alist
+        '(("h"  . "html")
+          ("c"  . "comment")
+          ("e"  . "example")
+          ("q"  . "quote")
+          ("s"  . "src")
+          ("su" . "src plantuml")
+          ("sj" . "src java")
+          ("sp" . "src python")
+          ("se" . "src emacs-lisp"))))
 
 (defun zrquan-org/post-init-org ()
   "Configuration of org mode"
@@ -60,7 +71,7 @@
       (setq org-tags-column 0)
       (setq org-hide-emphasis-markers t)
       (setq indent-tabs-mode nil)
-      (setq org-startup-indented t)
+      (setq org-startup-with-inline-images nil)
       (setq org-agenda-files '("~/org/agenda/"))
 
       (setq org-capture-templates
@@ -82,23 +93,28 @@
       (setq org-superstar-headline-bullets-list '("¶" "◉" "○" "※"))
 
       (add-hook 'org-mode-hook 'auto-fill-mode)
+      (add-hook 'org-mode-hook 'emojify-mode)
+      (add-hook 'org-mode-hook
+                (lambda () (setq evil-auto-indent nil)))
 
       (org-babel-do-load-languages
        'org-babel-load-languages
        '((emacs-lisp . t)
          (python . t)
-         (eshell . t)
          (plantuml . t)))
 
       ;; keybindings
-      (spacemacs/set-leader-keys-for-major-mode 'org-mode "or" 'org-redisplay-inline-images)
+      (spacemacs/set-leader-keys-for-major-mode 'org-mode
+        "or" 'org-redisplay-inline-images)
       )))
 
 (defun zrquan-org/post-init-org-download ()
   "configurations of org-download package"
-  (setq-default org-download-image-dir "~/org/images")
-  (setq-default org-download-heading-lvl 0)
-  (setq-default org-download-image-org-width 400)
+  (setq org-download-image-dir "~/org/images")
+  (setq org-download-abbreviate-filename-function 'expand-file-name)
+  (setq org-download-display-inline-images nil)
+  (setq org-download-heading-lvl 0)
+  (setq org-download-image-org-width 600)
 
   (evil-define-key 'insert org-mode-map
     (kbd "C-v") 'org-download-clipboard)
